@@ -1,30 +1,110 @@
 body {
-    font-family: Arial;
-    text-align: center;
-    background-color: #f5f5f5;
-}
-
-h1 {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    margin: 0;
     color: #333;
 }
 
-form {
-    margin: 20px;
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-ul {
-  list-style: none;
+h1 {
+    margin-bottom: 10px;
+    color: #4f46e5;
+}
+
+h3 {
+    margin-top: 25px;
+    margin-bottom: 0;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.upload-box {
+    position: relative; /* Context for the absolute input */
+    border: 2px dashed #cbd5e1;
+    padding: 40px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    background: #f3f2fd;
+}
+
+/* Make the input invisible but fill the entire container */
+input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Hides the default "No file chosen" text */
+    cursor: pointer;
+    z-index: 2; /* Keeps it on top of the text/button */
+}
+
+/* Style the text inside the box */
+.upload-content {
+    margin-bottom: 20px;
+}
+
+.upload-content .icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Visual feedback when hovering over the drop zone */
+.upload-box:hover {
+    background-color: #f3f2fd;
+    border-color: #4f46e5;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
+    position: relative;
+    z-index: 3;
+    padding: 12px 24px;
+    background: #4f46e5;
     color: white;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
 }
 
-img {
-    margin: 10px;
+button:hover {
+    background: #4338ca;
+}
+
+.results {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.event {
+    background: #f3f4f6;
+    padding: 10px;
     border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.images {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.images img {
+    width: 100%;
+    border-radius: 10px;
 }
