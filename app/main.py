@@ -14,7 +14,7 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 templates = Jinja2Templates(directory="app/templates")
 
-model = PoopModel("model/poop_model8.pth")
+model = PoopModel("model/poop_model.pth")
 
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
@@ -36,9 +36,15 @@ async def analyze(request: Request, file: UploadFile = File(...)):
     saved_images = []
 
     for i, (frame, ts) in enumerate(zip(frames, timestamps)):
+        if frame.mean() < 10:
+            continue
+
         pred, conf = model.predict(frame)
 
-        if pred == 0 and conf > 0.8:
+        if conf < 0.6:
+            continue
+
+        if pred == 1 and conf > 0.7:
             timestamp = round(ts, 2)
             detections.append(f"{timestamp}s (confidence: {round(conf, 2)})")
 
