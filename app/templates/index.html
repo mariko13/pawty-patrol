@@ -19,11 +19,13 @@
                 <li>{{ r }} seconds</li>
             {% endfor %}
         </ul>
+    {% else %}
+        <p>Nothing detected</p>
     {% endif %}
     {% if images %}
-    <h2>Detected Frames:</h2>
-    {% for img in images %}
-        <img src="{{ img }}" width="300">
+        <h2>Detected Frames:</h2>
+        {% for img in images %}
+            <img src="{{ img }}" width="300">
     {% endfor %}
 {% endif %}
 </body>
