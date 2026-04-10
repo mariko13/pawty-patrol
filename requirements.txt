@@ -1,0 +1,8 @@
+fastapi==0.110.0
+uvicorn==0.29.0
+torch
+torchvision
+opencv-python
+python-multipart
+jinja2==3.1.2
+pillow

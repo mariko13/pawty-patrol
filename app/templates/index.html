@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pawty Patrol</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Pawty Patrol</h1>
+
+    <form action="/analyze" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if results %}
+        <h2>Detected Events:</h2>
+        <ul>
+            {% for r in results %}
+                <li>{{ r }} seconds</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% if images %}
+    <h2>Detected Frames:</h2>
+    {% for img in images %}
+        <img src="{{ img }}" width="300">
+    {% endfor %}
+{% endif %}
+</body>
+</html>
