@@ -47,7 +47,7 @@ async def analyze(request: Request, file: UploadFile = File(...)):
             import cv2
             cv2.imwrite(image_path, frame)
 
-            saved_images.append(f"/static/detection_{i}.jpg")
+            saved_images.append(f"/static/detections/detection_{i}.jpg")
 
     return templates.TemplateResponse("index.html", {
         "request": request,
