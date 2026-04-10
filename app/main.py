@@ -32,19 +32,6 @@ async def analyze(request: Request, file: UploadFile = File(...)):
 
     frames, timestamps = extract_frames(file_path)
 
-    # detections = []
-    #
-    # for frame, ts in zip(frames, timestamps):
-    #     pred, conf = model.predict(frame)
-    #
-    #     if pred == 0 and conf > 0.8:
-    #         detections.append(round(ts, 2))
-    #
-    # return templates.TemplateResponse("index.html", {
-    #     "request": request,
-    #     "results": detections
-    # })
-
     detections = []
     saved_images = []
 
@@ -53,10 +40,10 @@ async def analyze(request: Request, file: UploadFile = File(...)):
 
         if pred == 0 and conf > 0.8:
             timestamp = round(ts, 2)
-            # detections.append(timestamp)
             detections.append(f"{timestamp}s (confidence: {round(conf, 2)})")
 
-            image_path = f"app/static/detection_{i}.jpg"
+            os.makedirs("app/static/detections", exist_ok=True)
+            image_path = f"app/static/detections/detection_{i}.jpg"
             import cv2
             cv2.imwrite(image_path, frame)
 
